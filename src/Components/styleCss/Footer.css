@@ -1,0 +1,28 @@
+.footerHeight{
+    height:70vh;
+}
+.footMargin{
+  /* background-color: red; */
+  position: relative;
+  left: 180px;
+  top: 50px;
+  padding: 20px;
+
+
+}
+
+.footMarginl{
+  /* background-color: red; */
+  position: relative;
+  left: 10px;
+  top: 50px;
+  padding: 20px;
+
+
+}
+.footerCopyright{
+    margin-top: 80px;
+}
+.aboutLogo{
+  width: 200px;
+}

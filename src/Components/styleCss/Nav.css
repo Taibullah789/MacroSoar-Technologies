@@ -1,0 +1,75 @@
+
+*{
+padding: 0%;
+margin: 0%;
+}
+
+.navbarGap{
+    position: relative;
+    left: 130px;
+    z-index: 3;
+    align-items: center;
+
+   
+}
+.navMargin{
+    margin-left: 20px;
+    padding-left: 10px;
+}
+
+.navMargin:last-child {
+  position: relative;
+  left: 70%;
+  width: 150px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid white;
+  color: white;
+  background: rgb(8, 10, 60); /* base visible background */
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Hover layers */
+.navMargin:last-child::before,
+.navMargin:last-child::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  transform: scaleY(0);
+  transition: transform 0.4s ease;
+  background-color: #ff612f;
+  z-index: -1;  /* 🔥 put them BEHIND the text */
+}
+
+.navMargin:last-child::before {
+  left: 0;
+  transform-origin: top;
+}
+
+.navMargin:last-child::after {
+  right: 0;
+  transform-origin: bottom;
+}
+
+/* On hover expand bg */
+.navMargin:last-child:hover::before,
+.navMargin:last-child:hover::after {
+  transform: scaleY(1);
+}
+
+/* Optional: text color stays white on hover */
+.navMargin:last-child:hover {
+  color: white;
+}
+
+
+
+
+.logo{
+    margin-top: 10px;
+    margin-left: 50px;
+}
