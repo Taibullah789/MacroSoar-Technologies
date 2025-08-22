@@ -16,7 +16,7 @@ function Navbar() {
     { path: '/our-services', label: 'Services' },
     { path: '/portfolio', label: 'Portfolio' },
     { path: '/contact-us', label: 'Contact Us' },
-    { path: '/contact-us', label: 'Inquiry' }
+    { path: '/contact', label: 'Inquiry' }
   ];
 
   return (

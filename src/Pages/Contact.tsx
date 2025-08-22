@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Footer from '../Components/homeComponents/Footer';
@@ -6,10 +6,49 @@ import '../Components/styleCss/Home.css';
 import HeaderInfo from '../Components/HeaderInfo';
 
 function Contact() {
+  const [status, setStatus] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("Submitting...");
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const res = await fetch(
+        "https://pxetmmimlpucxvvsgnsh.functions.supabase.co/contact-form",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json",
+            apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4ZXRtbWltbHB1Y3h2dnNnbnNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4Njk2ODMsImV4cCI6MjA3MTQ0NTY4M30.aJx9HoHwBrfOoQAZP54N4J3d9Dzoce0j_Gj7oSC4qC0",
+           },
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (res.ok) {
+        setStatus("✅ Message sent successfully!");
+        e.currentTarget.reset();
+      } else {
+        const err = await res.json();
+        setStatus("❌ Error: " + err.error);
+      }
+    } catch (error: any) {
+      setStatus("❌ Network error: " + error.message);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white flex flex-col ">
       {/* Orange Wave Header */}
-     <HeaderInfo header="Contact Us" description="Drop us a message for any query" />
+      <HeaderInfo header="Contact Us" description="Drop us a message for any query" />
 
       {/* Main Card Section */}
       <div className=" contact flex-1 flex flex-col items-center justify-center px-4 py-16  relative top-10">
@@ -31,24 +70,25 @@ function Contact() {
             <div className="flex items-center gap-2 text-sm mb-4"><FontAwesomeIcon icon={faEnvelope} className="text-orange-500" /> macrosoartechnologies@gmail.com</div>
           </div>
           {/* Right: Contact Form */}
-          <div className="flex-1  ">
+          <div className="flex-1">
             <div className="text-lg font-bold text-gray-800 mb-4">Let's Get in Touch</div>
-            <form className=" space-y-4">
+            <form onSubmit={handleSubmit} className=" space-y-4">
               <div className="flex gap-4">
-                <input type="text" placeholder="Your Name" required className="flex-1 rounded-md border border-gray-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200 bg-white shadow-sm" />
-                <input type="email" placeholder="Your Email" required className="flex-1 rounded-md border border-gray-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200 bg-white shadow-sm" />
+                <input type="text" name="name" placeholder="Your Name" required className="flex-1 rounded-md border border-gray-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200 bg-white shadow-sm" />
+                <input type="email" name="email" placeholder="Your Email" required className="flex-1 rounded-md border border-gray-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200 bg-white shadow-sm" />
               </div>
               <div className="flex gap-4">
-                <input type="text" placeholder="Your Phone" required className="flex-1 rounded-md border border-gray-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200 bg-white shadow-sm" />
-                <input type="text" placeholder="Your Subject" required className="flex-1 rounded-md border border-gray-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200 bg-white shadow-sm" />
+                <input type="text" name="phone" placeholder="Your Phone" required className="flex-1 rounded-md border border-gray-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200 bg-white shadow-sm" />
+                <input type="text" name="subject" placeholder="Your Subject" required className="flex-1 rounded-md border border-gray-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200 bg-white shadow-sm" />
               </div>
-              <textarea placeholder="Your Message" rows={4} className="w-full rounded-md border border-gray-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200 bg-white shadow-sm resize-none" />
+              <textarea name="message" placeholder="Your Message" rows={4} required className="w-full rounded-md border border-gray-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200 bg-white shadow-sm resize-none" />
               <div className="flex items-center gap-2 text-xs">
                 <input type="checkbox" id="terms" required className="accent-orange-500" />
                 <label htmlFor="terms">Accept <span className="text-orange-500">Terms</span> and <span className="text-orange-500">Privacy policy</span>.</label>
               </div>
               <button type="submit" className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-md transition-colors">Send Message</button>
             </form>
+            {status && <p className="mt-4 text-sm">{status}</p>}
           </div>
         </div>
       </div>
