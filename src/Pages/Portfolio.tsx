@@ -31,7 +31,7 @@ const location = useLocation();
        {isDetailPage && ( <>
       <HeaderInfo header="Portfolio" description="What we have Done" />
         
-        <div className="  portfolio bg-[#F9F5F0]"> <PortfolioDashboard /></div>
+        <div className="   bg-[#F9F5F0]"> <PortfolioDashboard /></div>
       
 </>
             

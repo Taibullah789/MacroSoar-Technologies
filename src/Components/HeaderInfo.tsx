@@ -41,7 +41,7 @@ function HeaderInfo({header,description}:heading) {
           </div>
           <div className="relative z-10 flex flex-col items-center justify-center h-full">
             <h1 className="text-4xl font-bold text-white mb-2">{header}</h1>
-            <p>{description}</p>
+            <p className='text-white '>{description}</p>
           </div>
         </div>
       </div>

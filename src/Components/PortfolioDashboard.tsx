@@ -17,8 +17,8 @@ type detail={
 }
 
 const services:detail[]=[
-    {title:"Web Development", description:"Visit", img:webimg, link:'web-portfolio',},
-    {title:"App Development", description:"Visit", img:appimg, link:'app-portfolio'},
+    {title:"Web Projects", description:"Visit", img:webimg, link:'web-portfolio',},
+    {title:"App Projects", description:"Visit", img:appimg, link:'app-portfolio'},
     {title:"Digital Marketing", description:"Visit", img:marketing, link:'marketing-portfolio'},
     {title:"UI/UX Designing", description:"Visit", img:designer, link:'ui-portfolio'}
 
@@ -27,7 +27,7 @@ const services:detail[]=[
 
 function PortfolioDashboard() {
   return (
-    <div className='flex justify-around m-0  flex-wrap'  style={{height:'50%'}}>   
+    <div className='portFolio flex justify-around m-0  flex-wrap'  style={{height:'50%'}}>   
         {services.map((service)=>(
     <PortfolioCard title={service.title} img={service.img} description={service.description} link={service.link} />
 ))

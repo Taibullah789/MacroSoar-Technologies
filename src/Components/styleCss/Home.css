@@ -197,12 +197,12 @@ line-height: 2.6;
 }
 .rightAnimation{
     /* background-color: red; */
-    animation: appear 5s  backwards;
+    animation: slidy 5s  backwards;
     animation-timeline: view();
     animation-range: entry 0% cover 40%;
 
 }
-@keyframes appear {
+@keyframes alidy {
     from{
 transform:translateX(100%);
 
@@ -463,42 +463,13 @@ transform: translateX(0%);
 }
 @keyframes appear {
   from{
-   transform: translateY(200px);
+    opacity: .3;
+   transform: translateY(50px);
   }
 
   to{
+    opacity: 1;
    transform: translateY(0px);
   }
 }
 
-/* 
-
-.portCard::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  padding: 2px; 
-  background: linear-gradient(90deg, #ff612f, #ff612f, #080A3C, #ff612f, #ff612f);
-  background-size: 300% 300%;
-  animation: moveBorder 6s linear infinite;
-  -webkit-mask: 
-    linear-gradient(#000 0 0) content-box, 
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  z-index: -1;
-}
-
-
-@keyframes moveBorder {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-} */
