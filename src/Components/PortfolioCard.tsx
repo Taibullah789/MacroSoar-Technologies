@@ -7,8 +7,8 @@ type portFolioProps={
     title:string;
     description:string;
     img:string;
-    link:string;
-    small:boolean;
+    link?:string;
+    small?:boolean;
 }
 
 
@@ -17,9 +17,9 @@ function PortfolioCard({title,description,img,link,small}:portFolioProps) {
 
   return (
 
-    <div className={`relative portCard border portborder ${small ? "h-[350px]" : "h-[400px]"}`} style={{marginTop:'50px' }}>
+    <div className={`relative portCard border portborder ${small ? "h-[350px]" : "h-[400px]"}`} style={{marginTop:'0px' }}>
         
-     <img src={img} alt="" style={{width:'100%',opacity:'', backgroundColor:'black', height:'70%', borderRadius:'15px'}} />
+     <img src={img} alt="" style={{width:'80%' ,opacity:'', backgroundColor:'black', height:'70%', borderRadius:'15px'}} />
      <div className='h-[16vh]'>
         <h4 className=''>{title}</h4>
 

@@ -1,6 +1,12 @@
 import React from 'react'
 
-function HeaderInfo({header,description}) {
+type heading=
+{
+  header:string;
+  description:string;
+}
+
+function HeaderInfo({header,description}:heading) {
   return (
     <div className="h-[30vh] bg-white flex flex-col ">
         {/* Orange Wave Header */}

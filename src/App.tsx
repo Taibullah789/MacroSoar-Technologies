@@ -8,7 +8,7 @@ import Portfolio from './Pages/Portfolio'
 import Contact from './Pages/Contact'
 import './index.css' // Assuming you have a global CSS file for styles
 import { div } from 'framer-motion/client'
-import Econix from './Components/PortfoliosPages/Econix'
+
 
 
 function App() {
