@@ -1,28 +1,31 @@
-.footerHeight{
-    height:70vh;
+/*  */
+.footerHeight {
+  height: 70vh;
+  display: flex;
+  align-items: center; /* Vertical center */
 }
-.footMargin{
-  /* background-color: red; */
-  position: relative;
-  left: 180px;
-  top: 50px;
+.footMargin,
+.footMarginl {
+  position: static; /* remove relative positioning */
   padding: 20px;
-
-
 }
 
-.footMarginl{
-  /* background-color: red; */
-  position: relative;
-  left: 10px;
-  top: 50px;
-  padding: 20px;
 
+/* Social Icon Styling */
+.social-icon {
+  background: #1a1e3a;
+  padding: 10px;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-}
-.footerCopyright{
-    margin-top: 80px;
-}
-.aboutLogo{
-  width: 200px;
+.social-icon:hover {
+  background: #ff612f;
+  transform: translateY(-3px);
+  color: #fff;
 }

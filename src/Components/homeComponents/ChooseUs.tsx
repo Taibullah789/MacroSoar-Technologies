@@ -31,7 +31,7 @@ const stats = [
   },
 ];
 
-function useInView(ref: React.RefObject<HTMLElement>) {
+function useInView(ref: React.RefObject<HTMLElement | null>) {
   const [isIntersecting, setIntersecting] = useState(false);
   useEffect(() => {
     const observer = new window.IntersectionObserver(
@@ -73,8 +73,8 @@ function ChooseUs() {
   const inView = useInView(sectionRef);
 
   return (
-    <section ref={sectionRef} className="py-16 bg-white relative " style={{backgroundColor:'#fff'}}>
-      <h2 className="text-4xl font-bold text-center mb-12">Why choose us</h2>
+    <section ref={sectionRef} className="py-16 bg-white relative left-16  " style={{backgroundColor:'#fff'}}>
+      <h2 className="text-4xl relative right-20 font-bold text-center mb-12">Why choose us</h2>
       <div className="  chooseView gap-6 max-w-5xl mx-auto  relative z-10">
         {stats.map((stat, idx) => (
           <div 

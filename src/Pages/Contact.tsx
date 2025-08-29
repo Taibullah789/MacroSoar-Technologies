@@ -26,9 +26,9 @@ function Contact() {
         "https://pxetmmimlpucxvvsgnsh.functions.supabase.co/contact-form",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json",
-            apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4ZXRtbWltbHB1Y3h2dnNnbnNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4Njk2ODMsImV4cCI6MjA3MTQ0NTY4M30.aJx9HoHwBrfOoQAZP54N4J3d9Dzoce0j_Gj7oSC4qC0",
-           },
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify(data),
         }
       );
@@ -38,7 +38,7 @@ function Contact() {
         e.currentTarget.reset();
       } else {
         const err = await res.json();
-        setStatus("❌ Error: " + err.error);
+        setStatus("❌ Error: " + (err.error || "Something went wrong"));
       }
     } catch (error: any) {
       setStatus("❌ Network error: " + error.message);
@@ -69,6 +69,7 @@ function Contact() {
             <div className="flex items-center gap-2 text-sm mb-1"><FontAwesomeIcon icon={faPhoneAlt} className="text-orange-500" /> +923455327716</div>
             <div className="flex items-center gap-2 text-sm mb-4"><FontAwesomeIcon icon={faEnvelope} className="text-orange-500" /> macrosoartechnologies@gmail.com</div>
           </div>
+
           {/* Right: Contact Form */}
           <div className="flex-1">
             <div className="text-lg font-bold text-gray-800 mb-4">Let's Get in Touch</div>
@@ -92,6 +93,7 @@ function Contact() {
           </div>
         </div>
       </div>
+
       <div className="relative top-30">
         <Footer />
       </div>

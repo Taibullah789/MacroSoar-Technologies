@@ -1,4 +1,4 @@
-
+/* ================== YOUR ORIGINAL CSS (UNCHANGED) ================== */
 
 .section{
     display: flex;
@@ -27,7 +27,10 @@ margin-left: 40px;
     
 
 
-   
+
+
+
+
 }
 .leftContent button{
     margin-top: 10px;
@@ -74,6 +77,7 @@ font-size: 13px;
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin-top: 20px;
+    
     
     
     
@@ -147,6 +151,7 @@ font-size: 13px;
 .chooseView{
   
     
+
     display: flex;
    
     height: 78vh;
@@ -216,7 +221,7 @@ transform: translateX(0%);
 
 .card {
   position: relative;
-  width: 250px;
+  width: 300px;
   padding: 20px;
   background: white;
   border-radius: 12px;
@@ -471,4 +476,254 @@ transform: translateX(0%);
    transform: translateY(0px);
   }
 }
+  make me this all responsive 
 
+/* ================== END ORIGINAL ================== */
+
+
+/* ================== ADDITIONS: RESPONSIVE + ANIMATION FIXES ================== */
+
+/* Make scroll animations work cross-browser:
+   1) Fix typo 'entro' -> 'entry' for portCard
+   2) Give portCard a duration & fill mode
+   3) Add fallback when 'animation-timeline' isn't supported
+*/
+.portCard {
+  /* keep your original animation line above; override here with valid syntax */
+  animation: appear 0.8s ease both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 20%;
+}
+.rightAnimation,
+.card,
+.portCard { will-change: transform, opacity; }
+
+@supports not (animation-timeline: view()) {
+  .rightAnimation { animation: slidy 0.8s ease both; }
+  .card { animation: cardAnimation 0.8s ease both; }
+  .portCard { animation: appear 0.8s ease both; }
+}
+
+/* ---------- Layout responsiveness without changing your base styles ---------- */
+
+/* Large tablets / small laptops */
+@media (max-width: 1200px) {
+  .section {
+    flex-wrap: wrap;
+    height: auto;              /* let content define height */
+    min-height: 100vh;         /* still keep full-screen feel */
+    padding: 20px 16px;
+  }
+
+  .rightContent,
+  .leftContent {
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .cardContainer {
+    height: auto;
+    width: 100%;
+    padding-top: 40px;
+  }
+
+  .servicesBtn {
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .contentSection {
+    width: 100%;
+    height: auto;
+    padding: 16px;
+    flex-wrap: wrap;
+  }
+
+  .contentSection > div {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .chooseView {
+    height: auto;
+    margin-left: 0;
+    padding: 16px 0;
+    flex-wrap: wrap;
+  }
+
+  .aboutLogo img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+  }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  .section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 320px;
+    height: auto;   /* allow taller content */
+  }
+
+  .portCard {
+    width: 100%;
+    left: 0;
+    max-width: 500px;
+  }
+
+  .sliderTransition {
+    width: min(90vw, 500px);
+    height: auto;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+/* Mobiles */
+@media (max-width: 600px) {
+  .section { padding: 12px; }
+
+  .rightContent,
+  .leftContent {
+    width: 100%;
+    height: auto;
+  }
+
+  .servicesBtn {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .servicesBtn button {
+    width: 90%;
+  }
+
+  .card {
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  .cardContainer { padding-top: 24px; }
+
+  .contentSection { padding: 10px; }
+
+  .chooseView { padding: 10px 0; }
+
+  .cardHeightChoose { height: auto; }
+
+  .Ai-ServiceBtnU,
+  .serviceBtnUpdate,
+  .serviceBtnUpdateUx,
+  .servicebtnU2 {
+    height: auto; /* allow wrap on small screens */
+  }
+
+  .aboutLogo img { max-width: 100%; }
+
+  .sliderTransition {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-bottom-left-radius: 28px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .servicesBtn button { font-size: 14px; padding: 10px 18px; }
+  .contactBtn { font-size: 16px; padding: 10px 22px; }
+}
+
+/* Animation classes for scroll effects */
+.animate-fade-in-up {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.bg-dark {
+  background-color: #1a1a1a;
+}
+
+/* Logo Slider Styles */
+.logo-slider-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: white;
+  text-align: center;
+}
+
+.logo-slider-track {
+  display: flex;
+  width: max-content;
+  animation: slide-left 60s linear infinite;
+  margin: 0 auto;
+}
+
+.logo-slide {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Pause animation on hover */
+.logo-slider-container:hover .logo-slider-track {
+  animation-play-state: paused;
+}
+
+
+/* contact us footer */
+/* Fade-in on scroll */
+.animate-fade-in-up {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Slow Spin */
+@keyframes slow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-slow-spin {
+  animation: slow-spin 12s linear infinite;
+}
+
+/* Slow Bounce */
+@keyframes slow-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-slow-bounce {
+  animation: slow-bounce 3s ease-in-out infinite;
+}

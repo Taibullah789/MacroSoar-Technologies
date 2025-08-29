@@ -18,12 +18,16 @@ serve(async (req: Request) => {
   }
 
   if (req.method !== "POST") {
-    return new Response("Method Not Allowed", { status: 405, headers: corsHeaders });
+    return new Response(JSON.stringify({ error: "Method not allowed" }), {
+      status: 405,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   }
 
   try {
     const { name, email, phone, subject, message } = await req.json();
 
+    // insert into Supabase table
     const { error } = await supabase
       .from("contact_messages")
       .insert([{ name, email, phone, subject, message }]);
@@ -35,9 +39,13 @@ serve(async (req: Request) => {
       });
     }
 
-    return new Response(JSON.stringify({ success: true }), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({ success: true, message: "Message saved successfully" }),
+      {
+        status: 200,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      }
+    );
   } catch (_err) {
     return new Response(JSON.stringify({ error: "Invalid request body" }), {
       status: 400,

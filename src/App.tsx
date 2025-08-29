@@ -8,6 +8,8 @@ import Portfolio from './Pages/Portfolio'
 import Contact from './Pages/Contact'
 import './index.css' // Assuming you have a global CSS file for styles
 import { div } from 'framer-motion/client'
+// import CustomCursor from './Components/CustomCursor'
+
 
 
 
@@ -15,6 +17,8 @@ function App() {
   return (
    <div className="m-0 p-0">
         <Navbar />
+        {/* <CustomCursor/> */}
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<About />} />

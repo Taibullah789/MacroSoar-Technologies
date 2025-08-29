@@ -73,3 +73,63 @@ margin: 0%;
     margin-top: 10px;
     margin-left: 50px;
 }
+/* Fix mobile menu overlay on top */
+nav,
+.mobile-menu,
+.menu,
+.navbar {
+  position: relative;
+  z-index: 9999; /* very high to stay above all sections */
+}
+/* Mobile dropdown menu */
+nav .mobile-menu,
+nav .md\:hidden + div {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  z-index: 9999; /* stay above content */
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  animation: slideDown 0.35s ease forwards;
+}
+
+/* Slide down animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Menu items inside mobile dropdown */
+nav .mobile-menu a,
+nav .md\:hidden + div a {
+  display: block;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
+  border-bottom: 1px solid #f1f1f1;
+  transition: all 0.3s ease;
+}
+
+/* Hover effects */
+nav .mobile-menu a:hover,
+nav .md\:hidden + div a:hover {
+  background: #ff612f;
+  color: #fff;
+  padding-left: 28px; /* subtle slide effect */
+}
+
+/* Last link without border */
+nav .mobile-menu a:last-child,
+nav .md\:hidden + div a:last-child {
+  border-bottom: none;
+}

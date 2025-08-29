@@ -8,7 +8,7 @@ type heading=
 
 function HeaderInfo({header,description}:heading) {
   return (
-    <div className="h-[30vh] bg-white flex flex-col ">
+    <div className="h-[30vh] z-0 bg-white flex flex-col ">
         {/* Orange Wave Header */}
         <div className="relative w-full h-56 bg-[#ff612f] relative top-4 flex flex-col justify-center items-center">
           <div className="absolute inset-0">
