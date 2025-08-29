@@ -45,9 +45,9 @@ function LogoSlider() {
   ];
 
   return (
-    <section className="py-8 bg-[#f4f5fe] h-[50vh]  flex items-center overflow-hidden">
-      <div className="container mx-auto">
-        <div className="logo-slider-container">
+    <section className="py-8 bg-[#f4f5fe] h-[50vh]   flex items-center overflow-hidden">
+      <div className="container mx-auto w-[76vw] relative left-41">
+        <div className="logo-slider-container ">
           <div ref={trackRef} className="logo-slider-track">
             {/* First set of logos */}
             {logos.map((logo, index) => (
@@ -62,6 +62,26 @@ function LogoSlider() {
             ))}
             {/* Duplicate set for seamless loop */}
             {logos.map((logo, index) => (
+              <div key={`second-${index}`} className="logo-slide">
+                <img 
+                  src={logo.src} 
+                  alt={logo.alt} 
+                  className="h-38 w-auto object-contain mx-4"
+                  style={{marginLeft:'35px'}}
+                />
+              </div>
+            ))}
+             {logos.map((logo, index) => (
+              <div key={`second-${index}`} className="logo-slide">
+                <img 
+                  src={logo.src} 
+                  alt={logo.alt} 
+                  className="h-38 w-auto object-contain mx-4"
+                  style={{marginLeft:'35px'}}
+                />
+              </div>
+            ))}
+             {logos.map((logo, index) => (
               <div key={`second-${index}`} className="logo-slide">
                 <img 
                   src={logo.src} 
